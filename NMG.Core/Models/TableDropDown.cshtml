@@ -1,0 +1,17 @@
+		        <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.{0})
+                    </td>
+                    <td class="editor-field">                      
+                        @if(ViewBag.{2} != null)                            
+                        {{
+                            @Html.DropDownListFor(model => model.{1}, new SelectList(ViewBag.{2}, "id", "title"), {3}.{4}.Select)
+                        }}
+                        else
+                        {{
+                            @Html.DropDownListFor(model => model.{1}, new SelectListItem[]{{}}, {3}.{4}.Select)
+                        }}
+                        <br />
+                        @Html.ValidationMessageFor(model => model.{1})                        
+                    </td>
+                </tr>

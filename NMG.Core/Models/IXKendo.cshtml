@@ -1,0 +1,89 @@
+﻿@using APS.Common.Statics
+@using APS.Common.Models
+@model {0}
+
+<div id="kendoTableDiv">
+</div>
+
+<script type="text/javascript">
+    $(function () {{
+
+        $("#kendoTableDiv").kendoGrid({{
+            columns: [
+{1}
+            {{ command: ["edit", "destroy"], title: " " }}
+    ],
+    dataSource: new kendo.data.DataSource({{
+         transport: {{
+                    read: "@(string.IsNullOrEmpty(Model.SearchString) ? Html.Raw("{2}/IXSearch") : Html.Raw("{2}/IXSearch/" + Model.SearchString))",
+                    update: {{
+                        url: function (kendomodel) {{
+                            return "{2}/edit"
+                        }},
+                        type: "POST"
+                    }},
+                    destroy: {{
+                        url: function (kendomodel) {{
+                            return "{2}/delete"
+                        }},
+                        type: "POST"
+                    }},
+                    create: {{
+                        url: function (kendomodel) {{
+                            return "{2}/create"
+                        }},
+                        type: "POST"
+                    }},
+                    parameterMap: function (options, operation) {{
+                        if (operation === "update" || operation === "create") {{
+                            var d = new Date(options.BirthDate);
+                            options.BirthDate = kendo.toString(new Date(d), "MM/dd/yyyy");
+                        }}
+                        return options;
+                    }}
+               }},
+            schema: {{
+                    data: "Data",
+                    total: "Count",
+                    model: {{
+                       id: "{3}", 
+                        fields: {{
+{4}
+                        }}
+                    }},
+                    errors: function(response) {{
+                        if(response.Messages.length >0)
+                            return response.Messages;
+                    }}
+            }},
+            error: function (e) {{
+                for (cerror in e.errors)
+                {{
+                    $("#CrudResult").append("<li>"+ cerror +"</li>");
+                }}
+                this.cancelChanges();
+                $("#CrudResult").css('display','inline').fadeOut('slow');
+            }},
+            pageSize: @(Model.pageSize),
+    serverPaging: true,
+        autoSync: false
+    }}),
+    editable: "inline",
+    pageable:
+    {{
+            input: true,
+            numeric: true
+    }},
+    columnMenu: true,
+    height: 400,
+    scrollable: true,
+    toolbar: ["create"],
+    sortable: {{
+            mode: "multiple"
+    }},
+    change: function (e) {{
+    }}
+    }});
+
+    }});
+</script>

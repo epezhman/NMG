@@ -1,0 +1,11 @@
+			    <tr>
+                    <td class="editor-label">
+                       @Html.LabelFor(model => model.{0})
+                    </td>
+                    <td class="editor-field">
+                        @if(Model.{0} != null)
+                        {{
+                            @Html.Action("{1}", "{2}" ,new {{ area = "{3}",  id = Model.{4}}})                           
+                        }}
+                    </td>
+                </tr>

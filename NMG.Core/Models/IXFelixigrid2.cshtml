@@ -1,0 +1,29 @@
+﻿@using APS.Common.Statics
+@using APS.Common.Models
+{8}
+@model PagedList<{0}>
+@{{    
+    int i = Model.PagingItem.PageIndex * Model.PagingItem.PageSize;
+    PagingItems sobj = Model.PagingItem;
+    int ix = sobj.PageIndex;    
+}}
+<table class="flexi">
+    <thead>
+        <tr>					
+{1}		 </tr>
+    </thead>
+    <tbody id="art_ls" class="fontSize-9">
+        @foreach (var item in Model)
+        {{
+            i++;
+            int j = 0;           
+            <tr>			 
+{2}			 </tr>
+        }}
+    </tbody>
+</table>
+<script type="text/javascript">
+$(".flexi").flexigrid({{
+	height:'auto',striped:false
+}});   
+</script>

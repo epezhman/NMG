@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A15F2280-C07B-4BBA-B822-6D06C464A582}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NMG.Core</RootNamespace>
+    <AssemblyName>NMG.Core</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>%24/Nhibernate Mapping Generator/NMG/NMG.Core</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>http://79.175.169.142:8080/tfs/aps%2520solution</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\Lib\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator.WindsorAdapter">
+      <HintPath>..\Lib\CommonServiceLocator.WindsorAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\Lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\Lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\Lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\Lib\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.1.0.82.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.1.0.82.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataManager\DataContext\NMGTableMetaData.cs">
+      <DependentUpon>NMGTableMetaData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\DataContext\NMGTableMetaData.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NMGTableMetaData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\ColumnDetail.cs" />
+    <Compile Include="Domain\DotNetTypes.cs" />
+    <Compile Include="Domain\Language.cs" />
+    <Compile Include="Domain\PrimaryKeyType.cs" />
+    <Compile Include="Domain\Table.cs" />
+    <Compile Include="FieldNamingConvention.cs" />
+    <Compile Include="Fluent\DBColumnMapper.cs" />
+    <Compile Include="Fluent\Constants.cs" />
+    <Compile Include="Generator\AbstractCodeGenerator.cs" />
+    <Compile Include="Generator\CastleGenerator.cs" />
+    <Compile Include="Generator\CodeGenerationHelper.cs" />
+    <Compile Include="Generator\ContractGenerator.cs" />
+    <Compile Include="Generator\ControllerGenerator.cs" />
+    <Compile Include="Generator\AnnotationGenerator.cs" />
+    <Compile Include="Generator\DALControllerGenerator.cs" />
+    <Compile Include="Generator\DALGenerator.cs" />
+    <Compile Include="Generator\MetaDataGenerator.cs" />
+    <Compile Include="Generator\NHFluentGenerator.cs" />
+    <Compile Include="Generator\FluentGenerator.cs" />
+    <Compile Include="Generator\MappingGenerator.cs" />
+    <Compile Include="Generator\CodeGenerator.cs" />
+    <Compile Include="DataTypeMapper.cs" />
+    <Compile Include="Generator\MysqlMappingGenerator.cs" />
+    <Compile Include="Generator\NpgsqlMappingGenerator.cs" />
+    <Compile Include="Generator\ResourceGenerator.cs" />
+    <Compile Include="Generator\SearchModelGenerator.cs" />
+    <Compile Include="Generator\ViewGenerationHelper.cs" />
+    <Compile Include="Generator\ViewGenerator.cs" />
+    <Compile Include="MetadataFactory.cs" />
+    <Compile Include="ApplicationPreferences.cs" />
+    <Compile Include="DataManager\Global.cs" />
+    <Compile Include="DataManager\IDbContext.cs" />
+    <Compile Include="DataManager\Model\Column.cs" />
+    <Compile Include="DataManager\Model\ColumnMap.cs" />
+    <Compile Include="DataManager\Model\Database.cs" />
+    <Compile Include="DataManager\Model\DatabaseMap.cs" />
+    <Compile Include="DataManager\Model\Table.cs" />
+    <Compile Include="DataManager\Model\TableMap.cs" />
+    <Compile Include="DataManager\NHDbContext.cs" />
+    <Compile Include="DataManager\NHSessionManager.cs" />
+    <Compile Include="DataManager\NoMap.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Reader\IConstraintTypeResolver.cs" />
+    <Compile Include="Reader\IMetadataReader.cs" />
+    <Compile Include="Reader\MysqlConstraintType.cs" />
+    <Compile Include="Reader\MysqlMetadataReader.cs" />
+    <Compile Include="Reader\NpgsqlConstraintType.cs" />
+    <Compile Include="Reader\NpgsqlMetadataReader.cs" />
+    <Compile Include="Reader\OracleConstraintType.cs" />
+    <Compile Include="Reader\OracleMetadataReader.cs" />
+    <Compile Include="Reader\SqlServerConstraintType.cs" />
+    <Compile Include="Reader\SqlServerMetadataReader.cs" />
+    <Compile Include="TextFormatter\Inflector.cs" />
+    <Compile Include="TextFormatter\TextFormatter.cs" />
+    <Compile Include="Util\Extensions.cs" />
+    <Compile Include="Generator\IGenerator.cs" />
+    <Compile Include="Generator\AbstractGenerator.cs" />
+    <Compile Include="Generator\OracleMappingGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\ServerType.cs" />
+    <Compile Include="Generator\SqlMappingGenerator.cs" />
+    <Compile Include="Util\StringConstants.cs" />
+    <Compile Include="Domain\ColumnDetails.cs" />
+    <Compile Include="Generator\ByCodeGenerator.cs" />
+    <Compile Include="ByCode\DBColumnMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataManager\DataContext\NMGTableMetaData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>NMGTableMetaData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Models\SearchBootstrapRow.cshtml" />
+    <None Include="Models\SearchBootstrapCellNumber.cshtml" />
+    <None Include="Models\SearchBootstrapCell.cshtml" />
+    <None Include="Models\SearchBootstrapModelView.cshtml" />
+    <None Include="Models\DeleteBootstrapTemplate.cshtml" />
+    <None Include="Models\DeleteBootstrapTemplateNoUI.cshtml" />
+    <None Include="Models\TableDropDownBootstrap.cshtml" />
+    <None Include="Models\TableRowBootstrap.cshtml" />
+    <None Include="Models\TableRowBootstrapDisplay.cshtml" />
+    <None Include="Models\TableRowBootstrapDisplayLookUp.cshtml" />
+    <None Include="Models\tableRowBootstrapFKey.cshtml" />
+    <None Include="Models\TableRowBootstrapForiegn.cshtml" />
+    <None Include="Models\TableRowBootstrapLookUp.cshtml" />
+    <None Include="Models\TableRowBootstrapNumber.cshtml" />
+    <None Include="Models\EditBootstrapTemplate.cshtml" />
+    <None Include="Models\EditTemplateBootstrapNoDialog.cshtml" />
+    <None Include="Models\CreateBootstrapTemplate.cshtml" />
+    <None Include="Models\CreateBootstrapTemplateNoDialog.cshtml" />
+    <None Include="Models\IXBootstrap.cshtml" />
+    <None Include="Models\IndexBootstrap.cshtml" />
+    <None Include="Models\EditTemplate.cshtml" />
+    <None Include="Models\EditTemplateNoDialog.cshtml" />
+    <None Include="Models\TableHeaderOld.cshtml" />
+    <None Include="Models\TableCellTime.cshtml" />
+    <None Include="Models\TableDropDown.cshtml" />
+    <None Include="Models\CreateTemplate.cshtml" />
+    <None Include="Models\CreateTemplateNoDialog.cshtml">
+      <SubType>Code</SubType>
+    </None>
+    <None Include="Models\DeleteTemplate.cshtml" />
+    <None Include="Models\DeleteTemplateNoUI.cshtml" />
+    <None Include="Models\DropDown.cshtml" />
+    <None Include="Models\Index.cshtml" />
+    <None Include="Models\IndexKendo.cshtml" />
+    <None Include="Models\Ix.cshtml" />
+    <None Include="Models\IXFelixigrid.cshtml" />
+    <None Include="Models\IXFelixigrid2.cshtml" />
+    <None Include="Models\IXKendo.cshtml" />
+    <None Include="Models\KendoColumn.cshtml" />
+    <None Include="Models\KendoSchema.cshtml" />
+    <None Include="Models\Link.cshtml" />
+    <None Include="Models\pimpone.cshtml" />
+    <None Include="Models\SearchModelView.cshtml" />
+    <None Include="Models\SearchTableCell.cshtml" />
+    <None Include="Models\SearchTableCellNumber.cshtml" />
+    <None Include="Models\SearchTableRow.cshtml" />
+    <None Include="Models\TableCell.cshtml" />
+    <None Include="Models\TableCellLookUpLabel.cshtml" />
+    <None Include="Models\TableHeader.cshtml" />
+    <None Include="Models\TableRow.cshtml" />
+    <None Include="Models\TableRowDisplay.cshtml" />
+    <None Include="Models\TableRowDisplayLookUp.cshtml" />
+    <None Include="Models\tableRowFKey.cshtml" />
+    <None Include="Models\TableRowForiegn.cshtml" />
+    <None Include="Models\TableRowLookUp.cshtml" />
+    <None Include="Models\TableRowNumber.cshtml" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataManager\DataContext\NMGTableMetaData.dbml.layout">
+      <DependentUpon>NMGTableMetaData.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+</Project>

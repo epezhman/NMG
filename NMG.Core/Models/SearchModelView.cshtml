@@ -1,0 +1,16 @@
+﻿@model {0}
+<table>
+{1}		<tr>        
+			<td>@{2}.{3}.RecordNumPerView</td>
+			<td id="searchHiddenInfo">
+				<select name="PageSize" id="PageSize">					
+					<option value="10" @(Model.PageSize == 10 ? "selected='selected'" : "")>10</option>
+                    <option value="20" @(Model.PageSize == 20 ? "selected='selected'" : "")>20</option>
+                    <option value="50" @(Model.PageSize == 50 ? "selected='selected'" : "")>50</option>
+                    <option value="100" @(Model.PageSize == 100 ? "selected='selected'" : "")>100</option>				
+				</select>
+                <input type="hidden" name="PageIndex" value="@Model.PageIndex" id="PageIndex" />
+			</td>
+    </tr>
+</table>
+

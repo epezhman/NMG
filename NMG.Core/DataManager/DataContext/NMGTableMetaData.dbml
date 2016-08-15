@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NMGTableMetaData" Class="NMGTableMetaDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.15.164;Initial Catalog=NMGTableMetaData;User ID=sa" SettingsObjectName="NMG.Core.Properties.Settings" SettingsPropertyName="NMGTableMetaDataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[Column]" Member="Columns">
+    <Type Name="Column">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TableId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CSharpType" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryKey" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ForeignKey" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Nullable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UniqueKey" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InList" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InSort" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InSearch" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InLookUpLabel" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InLookUpCombo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Regx" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="BeginRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EndRange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PersianName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DataLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConstraintName" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CheckRepepetiveError" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Table_Column" Member="Table" ThisKey="TableId" OtherKey="Id" Type="Table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Database]" Member="Databases">
+    <Type Name="Database">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ConnectionString" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Database_Message" Member="Messages" ThisKey="Id" OtherKey="DatabaseId" Type="Message" />
+      <Association Name="Database_Table" Member="Tables" ThisKey="Id" OtherKey="DatabaseId" Type="Table" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Messages" Member="Messages">
+    <Type Name="Message">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="FaName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="EnName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DatabaseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Database_Message" Member="Database" ThisKey="DatabaseId" OtherKey="Id" Type="Database" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Table]" Member="Tables">
+    <Type Name="Table">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DatabaseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Table_Column" Member="Columns" ThisKey="Id" OtherKey="TableId" Type="Column" />
+      <Association Name="Database_Table" Member="Database" ThisKey="DatabaseId" OtherKey="Id" Type="Database" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

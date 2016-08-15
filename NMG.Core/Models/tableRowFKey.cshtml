@@ -1,0 +1,10 @@
+				<tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.{0})
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.{1})
+                        <br />
+                        @Html.ValidationMessageFor(model => model.{1})
+                    </td>
+                </tr>

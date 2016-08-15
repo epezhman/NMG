@@ -1,0 +1,10 @@
+			    <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.{0})
+                    </td>
+                    <td class="editor-field">
+                        @Html.Action("{1}", "{2}", new {{ area = "{3}" }})
+                        <br />
+                        @Html.ValidationMessageFor(model => model.{0})
+                    </td>
+                </tr>

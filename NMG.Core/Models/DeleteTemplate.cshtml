@@ -1,0 +1,56 @@
+@model {0}
+<div class="post_text">
+    <h2 class="post_title">@*@ViewBag.Title*@</h2>
+    @using (Ajax.BeginForm("{1}",  new {{ }},
+    new AjaxOptions()
+    {{
+        Confirm = {4}.{5}.AreYouSure,
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "SubmitResult",
+        LoadingElementId = "LoadingGifD"        
+    }}, null))
+{{ 
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>@{4}.{5}.DeletePage</legend>
+            <div class="" id="SubmitResult">
+            </div>
+            <div class="">
+                <table>
+    {6} 			<tr>
+                        <td colspan="3">
+                            <div class="">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="button">
+                                                <input type="submit" value="@({4}.{5}.Submit)" id="submit" class="submit" />                                                
+                                            </div>
+                                            {7}
+                                        </td>
+                                        <td>
+                                            <div class="button" style="display: inline;">
+                                                <a href="javascript:void(0);" onclick="$('#dialog').dialog('close');" class="closeWindow">@{4}.{5}.CloseWindow</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="LoadingGifD" style="display: none">
+                                                <img src="@Url.Content("~/Images/ajax-loader/loading1.gif")" alt=""/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>    
+}}
+    <script>
+        $(function () {{
+                makeButtons();
+        }});
+    </script>
+</div>

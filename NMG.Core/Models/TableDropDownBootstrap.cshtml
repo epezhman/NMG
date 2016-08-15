@@ -1,0 +1,16 @@
+                <div class="control-group">
+                    <label class="control-label" for="{0}"> @Html.LabelFor(model => model.{0})</label>
+                    <div class="controls">
+                         @if(ViewBag.{2} != null)                            
+                        {{
+                            @Html.DropDownListFor(model => model.{1}, new SelectList(ViewBag.{2}, "id", "title"), {3}.{4}.Select)
+                        }}
+                        else
+                        {{
+                            @Html.DropDownListFor(model => model.{1}, new SelectListItem[]{{}}, {3}.{4}.Select)
+                        }}
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.{1})     
+                    </div>
+                </div>

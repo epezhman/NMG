@@ -1,0 +1,145 @@
+﻿@using APS.Common.Statics
+@using APS.Common.Models
+{8}
+@model PagedList<{0}>
+@{{    
+    int i = Model.PagingItem.PageIndex * Model.PagingItem.PageSize;
+    PagingItems sobj = Model.PagingItem;
+    int ix = sobj.PageIndex;    
+}}
+<div class="">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>#
+                </th>
+{1}		    @*@if (Request.IsAuthenticated)
+            {{*@
+                <th></th>
+            @*}}*@
+            </tr>
+        </thead>
+        <tbody id="art_ls" >
+            @foreach (var item in Model)
+        {{
+            i++;
+            int j = 0;           
+                <tr>
+                    <td>
+                        @(i)
+                    </td>
+{2}			@*@if (Request.IsAuthenticated)
+            {{ *@
+                    <td align="center">
+                        @Ajax.ActionLink("Edit", "Edit", new {{  id = item.{7} }},
+                   new AjaxOptions()
+                       {{
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           UpdateTargetId = "dialog",
+                           OnSuccess = " $('#dialog').dialog('open');",
+                           LoadingElementId = "ajaxLoading"
+                       }}, new {{ @class = "edit" }})
+                        @Ajax.ActionLink("Delete", "Delete", new {{  id = item.{7} }},
+                   new AjaxOptions()
+                       {{
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           UpdateTargetId = "dialog",
+                           OnSuccess = " $('#dialog').dialog('open');",
+                           LoadingElementId = "ajaxLoading"
+                       }},  new {{ @class = "delete" }})
+                    </td>
+            @*}}  *@
+                </tr>
+        }}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <span>@{4}.{5}.NumOfAll : @Model.PagingItem.TotalItemCount</span>
+
+                    @{4}.{5}.Page @(ix + 1)
+                    @{4}.{5}.From @Model.PagingItem.TotalPageCount
+                </td>
+                <td colspan="5">
+                    <div class="pagination pagination-small">
+                         <ul>
+                            @{{
+                    var start = ix;
+                    if (start > 0)
+                    {{
+                        int c = 0;
+                        while (start > 0 && c < 4)
+                        {{
+                            c++;
+                            start--;
+                        }}
+                    }}
+                    if (ix != 0)
+                    {{
+                        sobj.PageIndex = 0;
+                                <li>@Ajax.ActionLink("<< ", "IX", "{3}", sobj,
+                            new AjaxOptions
+                            {{
+                                UpdateTargetId = "ResultList",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,                               
+                                LoadingElementId = "ajaxLoading",
+                                OnBegin = "$('#searchHiddenInfo > #PageIndex').val('" + sobj.PageIndex + "')"
+                            }}
+                            , new {{ id = "First" }})
+                                </li>
+					}}
+                    for (int j = start; j < Model.PagingItem.TotalPageCount && j < start + 10; j++)
+                    {{
+                        if (ix != j)
+                        {{
+                            sobj.PageIndex = j;
+                            string idname = string.Format("paging_{0}", j);
+                            string onbegin = string.Format("beginPaging('{0}')", idname);
+                                <li>@Ajax.ActionLink((j + 1).ToString(), "IX", "{3}", sobj,
+                            new AjaxOptions
+                            {{
+                                UpdateTargetId = "ResultList",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,  
+                                LoadingElementId = "ajaxLoading",
+                                OnBegin = "$('#searchHiddenInfo > #PageIndex').val('" + sobj.PageIndex + "')"                              
+                                }}
+                            , new {{ id = idname }})
+                                </li>
+						}}
+                        else
+                        {{
+                                <li class="active">@(j + 1)</li>
+						}}
+                    }}
+                    if (start + 9 < Model.PagingItem.TotalPageCount)
+                    {{ 
+                                <li>@Ajax.ActionLink(" >>", "IX", "{3}", sobj,
+                            new AjaxOptions
+                            {{
+                                UpdateTargetId = "ResultList",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "ajaxLoading" ,
+                                OnBegin = "$('#searchHiddenInfo > #PageIndex').val('" + sobj.PageIndex + "')"
+            
+                                }}
+                            , new {{ id = "Last" }})
+                                </li>
+					}}
+                }}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script>
+    $(function () {{
+        makeButtons();
+    }});
+</script>

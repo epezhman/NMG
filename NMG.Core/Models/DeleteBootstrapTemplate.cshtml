@@ -1,0 +1,39 @@
+@model {0}
+<div class="">
+    <h2 class="">@*@ViewBag.Title*@</h2>
+    @using (Ajax.BeginForm("{1}",  new {{ }},
+    new AjaxOptions()
+    {{
+        Confirm = {4}.{5}.AreYouSure,
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "SubmitResult",
+        LoadingElementId = "LoadingGifD"        
+    }}, null))
+{{ 
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>@{4}.{5}.DeletePage</legend>
+            <div class="" id="SubmitResult">
+            </div>
+            <div class="">               
+    {6} 			
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" value="@({4}.{5}.Submit)" id="submit"  class="btn submit"/>
+                        {7}                               
+                        <a href="javascript:void(0);" class="btn closeWindow" onclick="$('#dialog').dialog('close');">@{4}.{5}.CloseWindow</a>
+                        <div id="LoadingGifD" style="display: none">
+                            <img src="@Url.Content("~/Images/ajax-loader/loading1.gif")" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>    
+}}
+    <script>
+        $(function () {{
+                makeButtons();
+        }});
+    </script>
+</div>

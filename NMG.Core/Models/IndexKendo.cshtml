@@ -1,0 +1,52 @@
+﻿@model {0}
+@{{
+    ViewBag.Title = {4}.{5}.Index;    
+}}
+<div class="post_text">
+    <h2>@{4}.{5}.List</h2>
+    <br />
+    <fieldset>
+        <legend>@{4}.{5}.Search</legend>
+        @using (Ajax.BeginForm("IX", new {{   }}, new AjaxOptions()
+    {{
+        UpdateTargetId = "ResultList",
+        LoadingElementId = "loadingSearch",
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,       
+    }},new {{ id = "searchForm"}}))
+    {{        
+            @Html.Action("{3}", Model)
+            <hr noshade="noshade" />        
+            <table>
+                <tr>
+                    <td>
+                        <div class="button">
+                            <input id="btnSubmit" type="submit" value="@{4}.{5}.Search" class="search"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="loadingSearch" style="display: none;">
+                            <img src="@Url.Content("~/Images/ajax-loader/loading1.gif")">
+                        </div>
+                    </td>
+                </tr>
+            </table>                                           
+    }}
+    </fieldset>
+    <div>
+        <ul id="CrudResult">
+        </ul>
+    </div>
+    <div id="ResultList">
+        @Html.Action("IX")
+    </div>
+    <fieldset>
+        <legend>@{4}.{5}.Help</legend>
+        <ul>
+            <li></li>
+        </ul>
+    </fieldset>
+    <div id="ajaxLoading" style="display: none">
+        <img src="@Url.Content("~/content/Images/ajax-loader/loading2.gif")" alt="loading" />
+    </div>
+</div>

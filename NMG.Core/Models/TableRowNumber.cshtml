@@ -1,0 +1,10 @@
+			    <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.{0})
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.{0}, new {{ data_num = "number" }})
+                        <br />
+                        @Html.ValidationMessageFor(model => model.{0})
+                    </td>
+                </tr>

@@ -1,0 +1,41 @@
+﻿@model {0}
+@{{
+    ViewBag.Title = {5}.{6}.CreateEditPage;
+}}
+<div class="">
+    <h2 class="">@*@ViewBag.Title*@</h2>
+    @using (Ajax.BeginForm("{1}", new {{  }}, new AjaxOptions()
+{{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "LoadingGifCE"
+}} , new {{ @class = "form-horizontal"}}))
+{{
+        @Html.AntiForgeryToken()  
+        @Html.ValidationSummary(true)    
+        <fieldset>
+            <legend>@{5}.{6}.CreatePage</legend>
+            <div class="" id="SubmitResult">
+            </div>
+            <div class="">
+    {4}			    
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="submit" value="@({5}.{6}.Submit)" id="submit"  class="btn submit"/>
+                        {7}                               
+                        <input type="reset" value="@({5}.{6}.Reset)"  id="reset" class="btn reset"/>
+                        <div id="LoadingGifCE" style="display: none">
+                            <img src="@Url.Content("~/Images/ajax-loader/loading1.gif")" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+}}
+    <script>
+        $(function () {{
+            makeButtons();
+        }});
+    </script>
+</div>

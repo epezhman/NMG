@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.625" name="NMGTableMetaData">
+  <DataContextMoniker Name="/NMGTableMetaDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="03dca9a8-05f1-4842-8916-c5726915e8a8" absoluteBounds="6.25, 1.25, 2, 4.0544051106770826">
+      <DataClassMoniker Name="/NMGTableMetaDataDataContext/Column" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da4e0b83-f652-4081-a814-b49dafd7e64c" absoluteBounds="6.265, 1.71, 1.9700000000000002, 3.494405110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e962082d-42fd-4a33-afe6-e0816b8a6c37" absoluteBounds="0.75, 4.125, 2, 1.2605004882812496">
+      <DataClassMoniker Name="/NMGTableMetaDataDataContext/Database" />
+      <nestedChildShapes>
+        <elementListCompartment Id="274a0f5a-555c-4599-b07c-de626974ce0e" absoluteBounds="0.765, 4.585, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5cbd587-2708-4376-874e-ba2b5221dad6" absoluteBounds="3.5, 6.625, 2, 1.7535424804687505">
+      <DataClassMoniker Name="/NMGTableMetaDataDataContext/Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a005a133-5a0b-47a6-b91b-14256219654f" absoluteBounds="3.515, 7.085, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f37b58e9-2c03-47cf-99d6-1e362d605c4d" absoluteBounds="3.5, 2.875, 2, 1.2605004882812496">
+      <DataClassMoniker Name="/NMGTableMetaDataDataContext/Table" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c809bcee-530b-4b42-b15e-9e35f3a949e4" absoluteBounds="3.515, 3.335, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 5.5112939453125); (1.75 : 7.60659912109375); (3.5 : 7.60659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NMGTableMetaDataDataContext/Database/Database_Message" />
+      <nodes>
+        <classShapeMoniker Id="e962082d-42fd-4a33-afe6-e0816b8a6c37" />
+        <classShapeMoniker Id="c5cbd587-2708-4376-874e-ba2b5221dad6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 3.56814697265625); (6.25 : 3.56814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NMGTableMetaDataDataContext/Table/Table_Column" />
+      <nodes>
+        <classShapeMoniker Id="f37b58e9-2c03-47cf-99d6-1e362d605c4d" />
+        <classShapeMoniker Id="03dca9a8-05f1-4842-8916-c5726915e8a8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.8862944453125); (4.5 : 4.8862944453125); (4.5 : 4.2612939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NMGTableMetaDataDataContext/Database/Database_Table" />
+      <nodes>
+        <classShapeMoniker Id="e962082d-42fd-4a33-afe6-e0816b8a6c37" />
+        <classShapeMoniker Id="f37b58e9-2c03-47cf-99d6-1e362d605c4d" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
